@@ -1,0 +1,14 @@
+%dw 2.0
+
+type auto_b9bd0e62_38f3_4b07_9c63_d0b19612b6f0_Input_Payload = {
+  NoofSeatsBooked: Number, 
+  ShowTime: String, 
+  MovieName: String, 
+  Discount: String, 
+  TotalPrice: Number, 
+  BookingId: Number, 
+  ShowDate: String, 
+  Location: String, 
+  _?: Any
+}
+

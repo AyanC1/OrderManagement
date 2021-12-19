@@ -1,0 +1,22 @@
+#%RAML 1.0
+title: ordermgmt_sysapi
+
+types: 
+  Movie_datatype : !include schemas/dataType.raml
+  Movie_example : !include examples/example.json
+
+/OrderDetails:
+  post:
+    description: "Add details of booked movies to Database"
+    body:
+      application/json:
+        type: Movie_datatype
+    responses:
+      201:
+        body:
+          application/json:
+            examples:
+              "message": "Order Details have been added"
+
+
+

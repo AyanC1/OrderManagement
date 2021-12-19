@@ -1,0 +1,15 @@
+{"value":
+	{
+		"property":
+		{
+			"BookingId": 613.0,
+			"MovieName": "Harry Potter and the order of pheonix",
+			"Location": "HYD",
+			"ShowTime": "11:00 AM",
+			"ShowDate": "25/09/2021",
+			"NoofSeatsBooked": 4,
+			"Discount": "10%",
+			"TotalPrice": 1080.00
+		}
+	}
+}
