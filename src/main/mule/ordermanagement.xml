@@ -6,9 +6,6 @@
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
-	<db:config name="Database_Config" doc:name="Database Config" doc:id="ecbb6cb2-0994-4663-97bc-4243c870a74f" >
-		<db:my-sql-connection host="db4free.net" port="3306" user="ayanc1" password="luckyTHIRTEEN" database="movies_bms"/>
-	</db:config>
 	<email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="eb7c7587-faad-4ae1-ac03-d9ac0c406fe1" >
 		<email:smtp-connection host="smtp.gmail.com" port="587" user="anurag.a.puri@apisero.com" password="\mg.Z2sn">
 			<email:properties >
