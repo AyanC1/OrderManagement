@@ -2,15 +2,15 @@
 title: ordermgmt_sysapi
 
 types: 
-  Movie_datatype : !include schemas/dataType.raml
-  Movie_example : !include examples/example.json
+  MovieDatatype : !include schemas/DataType.raml
+  MovieExample : !include examples/Example.json
 
 /OrderDetails:
   post:
     description: "Add details of booked movies to Database"
     body:
       application/json:
-        type: Movie_datatype
+        type: MovieDatatype
     responses:
       201:
         body:
