@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd http://www.mulesoft.org/schema/mule/munit-tools http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd ">
+    <munit:config name="order_management-apikit-test.xml" />
+    <http:request-config name="HTTP_Request_Configuration" basePath="/api">
+        <http:request-connection host="localhost" port="8081" />
+    </http:request-config>
+    <http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="e964027f-21df-443d-9b5a-8f3e1699ee7e" >
+		<http:request-connection protocol="HTTPS" host="localhost" port="8082" />
+	</http:request-config>
+	<munit:test name="post:\OrderDetails:application\json:order_management-config-201-application\json-FlowTest" description="Verifying functionality of [post:\OrderDetails:application\json:order_management-config-201-application\json]">
+        <munit:enable-flow-sources>
+            <munit:enable-flow-source value="order_management-main" />
+            <munit:enable-flow-source value="post:\OrderDetails:application\json:order_management-config" />
+        </munit:enable-flow-sources>
+        <munit:behavior>
+            <set-payload value="#[MunitTools::getResourceAsString('scaffolder/request/post_orderdetails_application_json.json')]" />
+        </munit:behavior>
+        <munit:execution>
+            <http:request config-ref="HTTP_Request_configuration" method="GET" path="api/OrderDetails">
+                <http:body ><![CDATA[{
+  "BookingId": 169,
+  "MovieName": "Ludo",
+  "Location": "PVR Priya",
+  "ShowTime": "17:00",
+  "ShowDate": "2021-12-25",
+  "NoofSeatsBooked": 4,
+  "Discount": "10%",
+  "TotalPrice": 1260.0
+}]]></http:body>
+				<http:headers><![CDATA[#[{"Accept":"application/json","Content-Type":"application/json"}]]]></http:headers>
+            </http:request>
+        </munit:execution>
+        <munit:validation>
+            <munit-tools:assert-that expression="#[payload]" is="#[MunitTools::notNullValue()]" message="Payload is null" doc:name="Assert That" />
+        </munit:validation>
+    </munit:test>
+</mule>
