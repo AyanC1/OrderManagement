@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="order_management-test-suite.xml" />
+	<munit:test name="order_management-test-suite-post:\OrderDetails:application\json:order_management-configTest" doc:id="4c19ff1e-6134-4d61-8083-e896e291b147" description="Test">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event" doc:id="3f3f944c-00bf-47d1-be86-6895ecf2b343" >
+				<munit:payload value='{&#10;  "BookingId": 168,&#10;  "MovieName": "Ludo",&#10;  "Location": "PVR Priya",&#10;  "ShowTime": "17:00",&#10;  "ShowDate": "2021-12-25",&#10;  "NoofSeatsBooked": 4,&#10;  "Discount": "10%",&#10;  "TotalPrice": 1260.0&#10;}' mediaType="application/json" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\OrderDetails:application\json:order_management-config" doc:id="1e1b0a86-b3a4-4ac0-b2bb-90ebb652f3c1" name="post:\OrderDetails:application\json:order_management-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="e6f5cf46-b251-4cef-9c08-880cf0f0d5cd" is="#[MunitTools::notNullValue()]" message="payload is null" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="order_management-test-suite-order_management-mainTest" doc:id="b432a749-86ee-4c60-8ab8-3c3c0a3559f9" description="Test">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event" doc:id="f0e70fbc-95c1-44b5-99d6-ab8309392d2a" >
+				<munit:attributes value='#[{attributes:{"xyz":"qwerty"}}]' />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to order_management-main" doc:id="559d1e5a-d6c8-4d43-b972-22b024fe33d8" name="order_management-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="be28932d-1ff3-4876-9d50-606b99a41630" message="payload is null" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

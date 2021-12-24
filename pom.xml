@@ -76,6 +76,10 @@
 						<formats>
 							<format>html</format>
 						</formats>
+						<ignoreFlows>
+							<ignoreFlow>order_management-main</ignoreFlow>
+							<ignoreFlow>order_management-console</ignoreFlow>
+						</ignoreFlows>
 					</coverage>
 				</configuration>
 			</plugin>
