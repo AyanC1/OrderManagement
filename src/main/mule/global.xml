@@ -18,7 +18,7 @@ http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="625462c3-e269-461d-b00a-4348e4801d69" >
 		<db:my-sql-connection host="${db.host}" port="${db.port}" user="${db.user}" password="${secure::db.password}" database="${db.database}"/>
 	</db:config>
-	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="b8fc36fc-d089-4969-9f57-c1626cebbfa7" file="config.yaml" key="${key}" >
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="b8fc36fc-d089-4969-9f57-c1626cebbfa7" file="config.yaml" key="demo" >
 		<secure-properties:encrypt algorithm="Blowfish" />
 	</secure-properties:config>
 </mule>
